@@ -181,16 +181,16 @@ function EntryForm({ idx, draft, item, onChange }: { idx: number; draft: Draft; 
     );
   }
 
-  const Field = ({ k, type = "text" }: { k: FieldKey; type?: string }) => {
+  const field = (k: FieldKey, type = "text") => {
     const low = f[k].value && f[k].confidence < 0.7;
     return (
-      <label className="block text-xs font-medium text-muted-foreground">
+      <label key={k} className="block text-xs font-medium text-muted-foreground">
         <span className="flex items-center gap-1">{FIELD_LABELS[k]}
           {low && <span title="Low confidence – please check" className="text-warning">? low confidence</span>}
           {f[k].value && f[k].confidence >= 0.7 && f[k].confidence < 1 && <span className="opacity-60">{Math.round(f[k].confidence * 100)}%</span>}
         </span>
-        <input type={type} defaultValue={f[k].value} placeholder="Not captured from document"
-          onBlur={(e) => e.target.value !== f[k].value && setField(k, e.target.value)}
+        <input type={type} value={f[k].value} placeholder="Not captured from document"
+          onChange={(e) => setField(k, e.target.value)}
           className={`${btn.input} mt-1 text-foreground ${low ? "field-low" : ""} ${!f[k].value ? "border-dashed" : ""}`} />
       </label>
     );
@@ -206,13 +206,13 @@ function EntryForm({ idx, draft, item, onChange }: { idx: number; draft: Draft; 
       <section>
         <h4 className="text-sm font-semibold mb-2">Patient</h4>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          <Field k="name" /><Field k="age" /><Field k="sex" /><Field k="village" /><Field k="phone" />
+          {field("name")}{field("age")}{field("sex")}{field("village")}{field("phone")}
         </div>
       </section>
       <section>
         <h4 className="text-sm font-semibold mb-2">Visit</h4>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <Field k="date" type="date" />
+          {field("date", "date")}
           <label className="block text-xs font-medium text-muted-foreground">Program
             {draft.programConfidence < 0.7 && <span className="text-warning"> ? guess</span>}
             <select value={draft.program} onChange={(e) => onChange({ ...draft, program: e.target.value as Program, programConfidence: 1 })}
@@ -220,9 +220,9 @@ function EntryForm({ idx, draft, item, onChange }: { idx: number; draft: Draft; 
               {PROGRAMS.map((p) => <option key={p}>{p}</option>)}
             </select>
           </label>
-          <Field k="complaints" /><Field k="diagnosis" />
-          <Field k="bp" /><Field k="fbs" /><Field k="hb" /><Field k="hba1c" />
-          <div className="col-span-2 md:col-span-4"><Field k="medicines" /></div>
+          {field("complaints")}{field("diagnosis")}
+          {field("bp")}{field("fbs")}{field("hb")}{field("hba1c")}
+          <div className="col-span-2 md:col-span-4">{field("medicines")}</div>
         </div>
       </section>
       <section className="rounded-lg bg-muted p-4">
