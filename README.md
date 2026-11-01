@@ -1,46 +1,62 @@
-# Phc Register Unifier
+# PHC Register Unifier
 
-Read the attached PHC Register Unifier Build Plan and use it as the main specification. Build a functional web application for a hackathon demo.
+**An AI-assisted patient record unification prototype for Primary Health Centres (PHCs) in India.**
 
-Prioritize:
+## Problem Statement
 
-1. Upload JPG, PNG, and PDF sample records.
+Primary Health Centre staff may need to work with patient information scattered across different registers and program-specific records. Retrieving a patient's previous information can consume time that could otherwise be spent on patient care.
 
-2. Extract patient information, using working OCR if feasible and clearly labelled sample extraction otherwise.
+## Proposed Solution
 
-3. Let staff review, correct, and approve extracted fields before saving.
+PHC Register Unifier demonstrates a workflow for uploading patient records, reviewing extracted information, linking records to demo patient IDs, and viewing a consolidated chronological timeline.
 
-4. Assign demo patient IDs and let staff confirm suggested record matches.
+## Key Features
 
-5. Display a chronological patient timeline with program filters.
+- **Document Upload:** Supports JPG, PNG, and PDF sample records.
+- **Information Extraction:** Extracts or demonstrates extraction of patient fields for staff review.
+- **Staff Verification:** Allows staff to review and correct extracted information before saving.
+- **Demo Patient Identification:** Assigns demo patient IDs and supports confirmation of suggested record matches.
+- **Patient Timeline:** Organizes records chronologically with program-based filtering.
+- **CSV Export:** Exports filtered records for further analysis.
+- **Demo Access:** Provides a simple demonstration login.
 
-6. Export filtered records to CSV.
+## Technology Stack
 
-7. Provide a simple demo login or clearly labelled demo access.
+- TypeScript
+- React-based frontend
+- Vite
+- TanStack Start
+- Additional dependencies are listed in `package.json`.
 
-Use fictional patient data only. Create a professional, responsive PHC dashboard with working interactions, not just a static mockup. Keep the implementation feasible, avoid unnecessary integrations, and do not claim production-level medical accuracy or official government-system integration.
+## Live Demo
 
-After building, test the main workflow and fix any errors that prevent the app from running.
+https://phc-register-unifier.lovable.app
 
-This project was built with [Lovable](https://lovable.dev).
+## Run Locally
 
-**Live app**: https://phc-register-unifier.lovable.app
+Prerequisites: Node.js and npm.
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/8ee34bd0-bc93-4c57-b7c6-973ce22ddd45).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+git clone https://github.com/ASMA31-pixel/PHC-Register-Unifier.git
+cd PHC-Register-Unifier
+npm install
 npm run dev
 ```
+
+Follow the terminal output to open the local development server.
+
+## Data and Safety
+
+- Use fictional patient information for demonstrations.
+- Staff verification is required before extracted information is treated as an approved record.
+- This is a hackathon prototype, not a production-ready medical records system.
+- It does not claim official integration with Indian government health systems or production-level medical accuracy.
+- Do not upload real patient records or sensitive personal information.
+
+## Project Status
+
+Hackathon demonstration prototype. Features should be evaluated using the live application and its source code.
+
+---
+
+Built with [Lovable](https://lovable.dev/).
